@@ -3,13 +3,16 @@ namespace VN.Data.API
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Sirenix.OdinInspector;
     using UniGame.MultiScene.Runtime;
     using UnityEngine;
     
-    #if UNITY_EDITOR
+#if ODIN_INSPECTOR
+    using Sirenix.OdinInspector;
+#endif
+    
+#if UNITY_EDITOR
     using UniModules.Editor;
-    #endif
+#endif
     
 
     [CreateAssetMenu(menuName = "MultiScene/Multi Scenes Collection", fileName = "Multi Scenes Collection")]
@@ -17,8 +20,11 @@ namespace VN.Data.API
     {
         #region inspector
 
+#if ODIN_INSPECTOR
         [ListDrawerSettings(ListElementLabelName = "@name")]
         [InlineEditor]
+#endif
+
         public List<MultiSceneAsset> scenes = new();
 
         #endregion
