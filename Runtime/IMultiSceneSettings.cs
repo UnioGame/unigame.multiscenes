@@ -1,4 +1,4 @@
-namespace VN.Data.API
+namespace UniGame.MultiScene.Runtime
 {
     using System.Collections.Generic;
     using UniGame.MultiScene.Runtime;
