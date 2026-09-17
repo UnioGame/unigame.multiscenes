@@ -13,9 +13,15 @@ namespace UniGame.MultiScene.Editor
     public sealed class MultiSceneAssetEditor : Editor
     {
         [OnOpenAsset(1)]
+#if UNITY_6000_4_OR_NEWER
+        private static bool OpenAssetHandler(EntityId instanceId, int line)
+        {
+            var obj = EditorUtility.EntityIdToObject(instanceId);
+#else
         private static bool OpenAssetHandler(int instanceId, int line)
         {
             var obj = EditorUtility.InstanceIDToObject(instanceId);
+#endif
             if (obj is not MultiSceneAsset multiSceneAsset)
                 return false;
 
